@@ -111,6 +111,8 @@ if __name__ == '__main__':
   sigf = cStringIO.StringIO(signature[11:])
   signed_value = int(RecvStr(sigf).encode('hex'), 16)
   assert '' == sigf.read(1), 'EOF expected in sigf'
+  #print repr(signed_value)  # This is the same for each run with the same
+  # input.
 
   # Verify the signature.
   decoded_value = pow(signed_value, public_exponent, modulus)
